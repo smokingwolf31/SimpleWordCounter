@@ -5,6 +5,8 @@
 			int words, chars;
 		};
 
+		bool isValidChar(char yChar);
+
 		void lineAnalyser(char* currentLine; ResultBuilder& currentWordsAndChars);
 	}
 #endif
