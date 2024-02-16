@@ -1,3 +1,4 @@
+#include <iostream>
 #include "analyser.h"
 
 bool NKBMNQ002::isValidChar(char myChar){
@@ -24,6 +25,7 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 		}
 		else
 			sameWord = false;
+		index +=1;
 	}
 	currentNumberOfWordsAndChars.chars += numberOfChars;
 	currentNumberOfWordsAndChars.words += numberOfWords;
