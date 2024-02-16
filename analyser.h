@@ -5,6 +5,11 @@
 			int words, chars;
 		};
 
+		struct CharInfo{
+			char myChar;
+			int frequency;
+		};
+
 		bool isValidChar(char yChar);
 
 		void lineAnalyser(char* currentLine, ResultBuilder& currentWordsAndChars);
