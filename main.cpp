@@ -7,6 +7,7 @@
 int main(char argc, char* argv){
 	
 	NKBMNQ002::ResultBuilder myResult;
+	int lines = 0;
 	myResult.words = 0;
 	myResult.chars = 0;
 	int lineBufferLimit = 300;
@@ -14,4 +15,6 @@ int main(char argc, char* argv){
 	while (std::cin.getline(myLine, lineBufferLimit)){
 		updateResult(myLine, myResult);
 	}
+	std::cout << lines << " " << myResult.words << " " << myResult.chars << std::endl;
+	return 0;
 }

@@ -12,8 +12,8 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 	int numberOfChars = 0;
 	int numberOfWords = 0;
 	int index=0;
-	bool sameWord = false; "Used to identify if a char contributes to an existing word or it is a start of a new one"
-	while(currentChar != '\n' && currentLine[index] != '\0'){
+	bool sameWord = false; //Used to identify if a char contributes to an existing word or it is a start of a new one"
+	while(currentLine[index] != '\n' && currentLine[index] != '\0'){
 		char currentChar = currentLine[index];
 		if(isValidChar(currentChar)){
 			numberOfChars += 1;

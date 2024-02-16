@@ -7,6 +7,6 @@
 
 		bool isValidChar(char yChar);
 
-		void lineAnalyser(char* currentLine; ResultBuilder& currentWordsAndChars);
+		void lineAnalyser(char* currentLine, ResultBuilder& currentWordsAndChars);
 	}
 #endif
