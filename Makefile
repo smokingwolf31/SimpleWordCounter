@@ -10,4 +10,4 @@ run:
 	./driver.exe
 
 clean:
-	rm *.o myWC.exe
+	rm *.o myWC.exe DEADJOE
