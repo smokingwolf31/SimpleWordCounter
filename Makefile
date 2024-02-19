@@ -7,7 +7,7 @@ myWC.exe: analyser.o main.o
 	$(G) -c $< -o $@
 
 run:
-	./driver.exe
+	./myWC.exe
 
 clean:
 	rm *.o myWC.exe DEADJOE

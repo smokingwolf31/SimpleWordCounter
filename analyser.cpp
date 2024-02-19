@@ -5,6 +5,7 @@
  *  @date 17 Feb 2024
 */
 
+#include <iostream>
 #include "analyser.h"
 
 
@@ -59,8 +60,14 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 			if(currentChar > 57){
 				int charIndex = getCharIndex(currentChar);
 				if(myChars[charIndex].count == 0){
-					myChars[charIndex].character = currentChar;
 					myChars[charIndex].count = 1;
+					int asciiChar = int(currentChar);
+					if (asciiChar < 91){
+						asciiChar += 32;
+						myChars[charIndex].character = char(asciiChar);
+					}
+					else
+						myChars[charIndex].character = currentChar;
 				}
 				else{
 					myChars[charIndex].count += 1;
@@ -73,4 +80,21 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 	}
 	currentNumberOfWordsAndChars.chars += numberOfChars;
 	currentNumberOfWordsAndChars.words += numberOfWords;
+}
+
+int NKBMNQ002::wordCounter(NKBMNQ002::ResultBuilder& myResult, std::vector<NKBMNQ002::CharInfo>& myChars){
+
+	int lines = 0;
+	myResult.words = 0;
+	myResult.chars = 0;
+	int lineBufferLimit = 300;
+	for (int index=0 ; index<26; index++){
+		myChars[index].count = 0;
+	}
+	char myLine[lineBufferLimit]; // if we were to use <string> it would be so much cleaner
+	while (std::cin.getline(myLine, lineBufferLimit)){
+		lineAnalyser(myLine, myResult, myChars);
+		lines += 1;
+	}
+	return lines;
 }

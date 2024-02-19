@@ -5,6 +5,7 @@
  *  16 Feb 2024
 */
 
+
 #include <vector>
 
 #ifndef ANAYLSER_H
@@ -26,5 +27,7 @@
 		bool isValidChar(char myChar);
 
 		void lineAnalyser(char* currentLine, ResultBuilder& currentWordsAndChars, std::vector<CharInfo>& myChars);
+
+		int wordCounter(ResultBuilder& myResult, std::vector<CharInfo>& myChars);
 	}
 #endif
