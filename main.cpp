@@ -14,9 +14,10 @@
 int main(int argc, char** argv){
 	NKBMNQ002::ResultBuilder myResult;
 	std::vector<NKBMNQ002::CharInfo> myChars(26);
-	int lines = NKBMNQ002::wordCounter(myResult, myChars);
-	std::cout << lines << " " << myResult.words << " " <<myResult.chars;
 
+	int lines = NKBMNQ002::wordCounter(myResult, myChars);
+
+	std::cout << lines << " " << myResult.words << " " <<myResult.chars;
 	bool firstElement = true;
 	for (int index=0; index<26; index++){
 		if (myChars[index].count != 0){

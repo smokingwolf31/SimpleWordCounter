@@ -47,8 +47,8 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 
 	int numberOfChars = 0;
 	int numberOfWords = 0;
-	int index=0;
 	bool sameWord = false; //Used to identify if a char contributes to an existing word or it is a start of a new one"
+	int index=0;
 	while(currentLine[index] != '\n' && currentLine[index] != '\0'){
 		char currentChar = currentLine[index];
 		if(isValidChar(currentChar)){
@@ -57,7 +57,7 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 				numberOfWords += 1;
 				sameWord = true;
 			}
-			if(currentChar > 57){
+			if(currentChar > 57){ 
 				int charIndex = getCharIndex(currentChar);
 				if(myChars[charIndex].count == 0){
 					myChars[charIndex].count = 1;
@@ -82,6 +82,12 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 	currentNumberOfWordsAndChars.words += numberOfWords;
 }
 
+/**
+ * Used to count all the words given in a standard input
+ * @arg NKBMNQ002::ResultBuilder& used to pass in the struct which holds the words and character counts
+ * @arg std::vector<NKBMNQ002::CharInfo>& used to pass in the struct which holds the frequecy of all the chars in the input
+ * @return int which represent the number of lines analysed
+*/
 int NKBMNQ002::wordCounter(NKBMNQ002::ResultBuilder& myResult, std::vector<NKBMNQ002::CharInfo>& myChars){
 
 	int lines = 0;
