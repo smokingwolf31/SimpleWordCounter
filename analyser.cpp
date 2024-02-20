@@ -28,8 +28,11 @@ bool NKBMNQ002::isValidChar(char myChar){
 */
 int NKBMNQ002::getCharIndex(char myChar){
 	int charAscii = myChar;
-	if (charAscii<91){
+	if (charAscii>64 && charAscii<91){
 		charAscii += 32;
+	}
+	else if(charAscii < 58){
+		charAscii += 75;
 	}
 	return charAscii - 97;
 }
@@ -57,21 +60,19 @@ void NKBMNQ002::lineAnalyser(char* currentLine, ResultBuilder& currentNumberOfWo
 				numberOfWords += 1;
 				sameWord = true;
 			}
-			if(currentChar > 57){ 
-				int charIndex = getCharIndex(currentChar);
-				if(myChars[charIndex].count == 0){
-					myChars[charIndex].count = 1;
-					int asciiChar = int(currentChar);
-					if (asciiChar < 91){
-						asciiChar += 32;
-						myChars[charIndex].character = char(asciiChar);
-					}
-					else
-						myChars[charIndex].character = currentChar;
+			int charIndex = getCharIndex(currentChar);
+			if(myChars[charIndex].count == 0){
+				myChars[charIndex].count = 1;
+				int asciiChar = int(currentChar);
+				if (asciiChar>64 && asciiChar<91){
+					asciiChar += 32;
+					myChars[charIndex].character = char(asciiChar);
 				}
-				else{
-					myChars[charIndex].count += 1;
-				}
+				else
+					myChars[charIndex].character = currentChar;
+			}
+			else{
+				myChars[charIndex].count += 1;
 			}
 		}
 		else
@@ -94,7 +95,7 @@ int NKBMNQ002::wordCounter(NKBMNQ002::ResultBuilder& myResult, std::vector<NKBMN
 	myResult.words = 0;
 	myResult.chars = 0;
 	int lineBufferLimit = 300;
-	for (int index=0 ; index<26; index++){
+	for (int index=0 ; index<36; index++){
 		myChars[index].count = 0;
 	}
 	char myLine[lineBufferLimit]; // if we were to use <string> it would be so much cleaner

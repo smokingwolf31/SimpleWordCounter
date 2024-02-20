@@ -13,13 +13,13 @@
 
 int main(int argc, char** argv){
 	NKBMNQ002::ResultBuilder myResult;
-	std::vector<NKBMNQ002::CharInfo> myChars(26);
+	std::vector<NKBMNQ002::CharInfo> myChars(36);
 
 	int lines = NKBMNQ002::wordCounter(myResult, myChars);
 
 	std::cout << lines << " " << myResult.words << " " <<myResult.chars;
 	bool firstElement = true;
-	for (int index=0; index<26; index++){
+	for (int index=0; index<36; index++){
 		if (myChars[index].count != 0){
 			if(firstElement){
 				std::cout << " ["<< myChars[index].character << ":" << myChars[index].count;
